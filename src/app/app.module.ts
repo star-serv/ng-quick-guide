@@ -8,6 +8,14 @@ import { AppRoutingModule } from './app-routing.module';
 import { TypescriptComponent } from './topics/typescript/typescript.component';
 import { TemporaryComponent } from './components/temporary/temporary.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { SidenavComponent } from './material/sidenav/sidenav.component';
+
+// material 
+import {MatSidenavModule} from '@angular/material/sidenav';
+import {MatIconModule} from '@angular/material/icon';
+import {MatButtonModule} from '@angular/material/button';
+
+
 
 @NgModule({
   declarations: [
@@ -15,12 +23,16 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     DefaultHomeComponent,
     HomeComponent,
     TypescriptComponent,
-    TemporaryComponent
+    TemporaryComponent,
+    SidenavComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    MatSidenavModule,
+    MatIconModule,
+    MatButtonModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
