@@ -78,3 +78,8 @@ svg.material-icons:not(:last-child) {
 .card.card.highlight-card span {
     margin-left: 60px;
 }
+
+.terminal {
+    margin: 8px auto;
+    max-width: 600px;
+}

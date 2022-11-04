@@ -18,11 +18,10 @@ p {
 
 .terminal {
     position: relative;
-    /* width: 80%; */
-    max-width: 600px;
+    /* max-width: 600px; */
     border-radius: 6px;
     padding-top: 45px;
-    margin: 8px auto;
+    /* margin: 8px auto; */
     overflow: hidden;
     background-color: rgb(15, 15, 16);
 }

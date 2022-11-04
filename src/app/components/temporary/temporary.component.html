@@ -1,1 +1,8 @@
-<app-sidenav></app-sidenav>
+<ul *ngFor="let i of mylist">
+    <li>{{i}}</li>
+</ul>
+
+<input type="text" [(ngModel)]="get">
+<button (click)="add()">add</button>
+
+<basic-core></basic-core>
