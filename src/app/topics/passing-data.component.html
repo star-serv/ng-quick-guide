@@ -1,0 +1,113 @@
+<div>
+    <h2>Passing Data Between Components</h2>
+    <p>
+        Three ways to pass data between components are: input decorator, output decorator, and template variable.
+    </p>
+
+    <h4>Input: passing data from parent to child</h4>
+    <ol>
+        <li>import Input inside child</li>
+        <li>declare Input inside child -> @Input() name</li>
+        <li>link using [] binding inside parent template -> [childPropName]="parentPropName'</li>
+    </ol>
+    <div class="code">
+        <mat-tab-group mat-align-tabs="start">
+            <mat-tab label="parent.html">
+                <div class="terminal">
+                    <pre>&lt;child [childPropName]="parentPropName"&gt;&lt;/child&gt;</pre>
+                </div>
+            </mat-tab>
+            <mat-tab label="parent.ts">
+                <div class="terminal">
+                    <pre>parentPropName = "name: smith, job: teacher"</pre>
+                </div>
+            </mat-tab>
+            <mat-tab label="child.ts">
+                <div class="terminal">
+                    <pre>@Input() childPropName: any</pre>
+                </div>
+            </mat-tab>
+        </mat-tab-group>
+    </div>
+
+    <h4>Output: passing data from child to parent</h4>
+    <ol>
+        <li>import Output and EventEmitter inside child</li>
+        <li>declare output inside child -> Output() childEmitter = new EventEmitter()</li>
+        <li>create function to emit data -> func(): childDataEmmiter.emit</li>
+        <li>add button that uses func in child template</li>
+        <li>use childemitter in parent template, the emit will emit child data as $event -> (childEmitter)="getChildData($event)"</li>
+        <li>create func in parent that takes in $event -> getChildData(data): do something with data</li>
+    </ol>
+    <div class="code">
+        <mat-tab-group mat-align-tabs="start">
+            <mat-tab label="child.ts">
+                <div class="terminal">
+                    <pre>
+@Output() childDataEmmiter = new EventEmitter();
+
+childData = "data from inside child.";
+
+outputChildData() 
+    this.childDataEmmiter.emit(this.childData);
+                    </pre>
+                </div>
+            </mat-tab>
+            <mat-tab label="child.html">
+                <div class="terminal">
+                    <pre>&lt;button (click)="outputChildData()">emit&gt;&lt;/button&gt;</pre>
+                </div>
+            </mat-tab>
+            <mat-tab label="parent.ts">
+                <div class="terminal">
+                    <pre>
+childData = "default data not from child";
+
+getChildData(data: any) 
+    this.childData = data;
+                    </pre>
+                </div>
+            </mat-tab>
+            <mat-tab label="parent.html">
+                <div class="terminal">
+                    <pre>
+&lt;p&gt;data: childData &lt;/p&gt;
+&lt;child (childDataEmmiter)="getChildData($event)"&gt;&lt;/child&gt;
+                    </pre>
+                </div>
+            </mat-tab>
+        </mat-tab-group>
+    </div>
+
+    <h4>Template Ref Variable: passing data child to parent </h4>
+    <ol>
+        <li>declare template variable -> #iname</li>
+        <li>iname will now refer to the element</li>
+        <li>child propertie can now be accessed by iname -> iname.childData or iname.funcCall()</li>
+        <li>data can be passed to parent -> (parentClick)="func(iname.childData)"</li>
+    </ol>
+    <div class="code">
+        <mat-tab-group mat-align-tabs="start">
+            <mat-tab label="child.ts">
+                <div class="terminal">
+                    <pre>
+childData = "data from inside child.";
+
+funcFromChild()
+    alert("calling from child.");
+                    </pre>
+                </div>
+            </mat-tab>
+            <mat-tab label="parent.html">
+                <div class="terminal">
+                    <pre>
+&lt;child #iname&gt;&lt;/child&gt;
+&lt;div&gt; iname.childData &lt;/div&gt;
+&lt;button (click)="add(iname.childData)"&gt; do &lt;/button&gt;
+                    </pre>
+                </div>
+            </mat-tab>
+        </mat-tab-group>
+    </div>
+
+</div>

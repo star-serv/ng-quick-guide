@@ -15,9 +15,8 @@ export class TemporaryComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  add(): void {
-    this.mylist.push(this.get);
-    this.get = null;
+  add(value: any): void {
+    this.mylist.push(value);
   }
 
 }

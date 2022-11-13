@@ -4,13 +4,15 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './components/home/home.component';
 import { AppRoutingModule } from './app-routing.module';
-import { TypescriptComponent } from './topics/typescript/typescript.component';
 import { TemporaryComponent } from './components/temporary/temporary.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SidenavComponent } from './material/sidenav/sidenav.component';
 import { ContentTemplateComponent } from './components/content-template/content-template.component';
 import { FormsModule } from '@angular/forms';
 import { BasicCoreComponent } from './examples/basic-core.component';
+import { DataBindingParent } from './examples/data-binding-parent.component';
+import { DataBindingChild } from './examples/data-binding-child.component';
+import { PassingDataComponent } from './topics/passing-data.component';
 
 // material 
 import {MatSidenavModule} from '@angular/material/sidenav';
@@ -24,11 +26,13 @@ import {MatTabsModule} from '@angular/material/tabs';
   declarations: [
     AppComponent,
     HomeComponent,
-    TypescriptComponent,
     TemporaryComponent,
     SidenavComponent,
     ContentTemplateComponent,
     BasicCoreComponent,
+    DataBindingChild,
+    DataBindingParent, 
+    PassingDataComponent,
   ],
   imports: [
     BrowserModule,
